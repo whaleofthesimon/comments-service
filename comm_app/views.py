@@ -27,7 +27,7 @@ class CommentsViewSet(mixins.CreateModelMixin,
         return Response(serializer.data)
 
     @action(detail=False, methods=['get'], url_path=r'comm_branch/(?P<entity_name>\w+)/(?P<object_id>\w+)')
-    def comm_branch(self, request, entity_name, object_id):  # TODO ПРОВЕРИТЬ НА КОСТЫЛИ
+    def comm_branch(self, request, entity_name, object_id):
         comm_list = []
 
         def get_comm_list(entity_name, object_id):

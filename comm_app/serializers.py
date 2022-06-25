@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from comm_app.models import *
 
+
 class AllCommentsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Commentaries
