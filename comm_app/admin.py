@@ -1,7 +1,5 @@
 from django.contrib import admin
 from mptt.admin import MPTTModelAdmin
-from comm_app.models import Comment, Post, Blog
+from comm_app.models import Comment
 
 admin.site.register(Comment, MPTTModelAdmin)
-admin.site.register(Post)
-admin.site.register(Blog)

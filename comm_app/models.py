@@ -12,7 +12,7 @@ class Comment(MPTTModel):
     creation_date = models.DateField(verbose_name='Дата создания комментария', auto_now_add=True)
     content_type = models.ForeignKey(ContentType, verbose_name='Связанная сущность', on_delete=models.CASCADE,
                                      limit_choices_to={'app_label': 'comm_app'})
-    object_id = models.PositiveIntegerField(verbose_name='ID объекта сущности', null=True)
+    object_id = models.PositiveIntegerField(verbose_name='ID объекта сущности')
     parent = TreeForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
 
     class MPTTMeta:
@@ -22,11 +22,3 @@ class Comment(MPTTModel):
         indexes = [
             models.Index(fields=["content_type", "object_id"]),
         ]
-
-
-class Post(models.Model):
-    content = models.TextField()
-
-
-class Blog(models.Model):
-    content = models.TextField()
