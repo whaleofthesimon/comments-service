@@ -10,6 +10,15 @@ class AllCommentsSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("This entity's object doesn't exist yet!")
         return data
 
+    def create(self, validated_data):
+        content_type = validated_data.get('content_type')
+        object_id = validated_data.get('object_id')
+        parent = None
+        if content_type.model == 'comment':
+            parent = Comment(pk=object_id)
+        new_comment = Comment.objects.create(parent=parent, **validated_data)
+        return new_comment
+
     class Meta:
         model = Comment
         fields = (
