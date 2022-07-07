@@ -9,4 +9,5 @@ RUN pip install --no-cache-dir -r /code/requirements.txt
 COPY . /code/
 
 COPY docker-entrypoint.sh /code/docker-entrypoint.sh
-ENTRYPOINT ["/code/docker-entrypoint.sh", "-n"]
+RUN chmod +x /code/docker-entrypoint.sh
+ENTRYPOINT ["sh", "/code/docker-entrypoint.sh"]
